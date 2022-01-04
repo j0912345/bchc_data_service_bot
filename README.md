@@ -1,5 +1,5 @@
 # read this pls
-a file called token.txt is missing from here because if it was here, people could hack my bot very easily.
+a file called recover_from_crash.txt is missing from here because if it was here, people could hack my bot very easily.
 # what to download:
 pycord (get the dev version because the normal download is incomplete):  
 ```
