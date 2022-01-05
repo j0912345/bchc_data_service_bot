@@ -182,18 +182,18 @@ async def on_message(message):
                 user_save_name = f"{attachment.filename}"
                 temp_save_filename = f"{user_save_name}_at_"+str(round(time.time()))+"_by_"+str(author)
                 await attachment.save("temp_save_dir/"+temp_save_filename)
-                print("downloaded a save file: "+temp_save_filename)
+                print("\ndownloaded a save file: "+temp_save_filename)
                 help_hack_message = f"please reply to this message with a list of hacks in a csv format. use \"{prefix} help\" for examples of these lists + how to make one."
                 await message.channel.send(help_hack_message)
                 def check_for_reply(m):
 ##                    print(m.content != None)
 ##                    print(message.author != client.user)
-                    print("\n== new message check ==")
-                    print(m.author.id)
-                    print(author)
-                    print(client.user)
-                    print(m.content)
-                    print("")
+##                    print("\n== new message check ==")
+##                    print(m.author.id)
+##                    print(author)
+##                    print(client.user)
+##                    print(m.content)
+##                    print("")
                     return m.content != None and m.content != help_hack_message and message.author != client.user and m.author.id == author
 
                 try:
@@ -237,6 +237,7 @@ async def on_message(message):
                     except IndexError:
                         await message.channel.send("error, it looks like your list of hacks don't have \"end\" at the end!")
                     os.remove(temp_user_save_dir)
+                    print(f"\nsave was hacked. person who started the hack dialog: {author} | save edit options: {hack_list} | time of save hack: {time.time()}")
             #if there is no attachments:
             else:
                 await message.channel.send("error, no save file attached")
