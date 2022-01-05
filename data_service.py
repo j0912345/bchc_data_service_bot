@@ -1,4 +1,5 @@
 import discord
+from discord import guild
 from discord.ext import commands
 from discord.commands import Option
 from discord.ui import button, View
@@ -147,6 +148,15 @@ async def on_message(message):
                 print("shuting off the bot")
                 await message.channel.send("turning off...")
                 await client.close()
+
+#(note from past: if something doesn't work, try adding a "after" or "before" prefix.)
+# how to use the audit log:
+##        elif message.author.id == bot_owner_id and message.content.startswith(prefix+"audit"):
+##            print("getting log...")
+##            with open("audit_log.txt", "wb") as log_file:
+##                async for entry in client.get_guild(857886691938795541).audit_logs(limit=100):
+##                    log_file.write(bytes(f'{entry.user} did {entry.action} to {entry.target} because: {entry.reason} | extra: {entry.extra}\nfull data={entry}'+"\n\n\n", "utf-16"))
+##            print("done!")
                     
         elif message.content.startswith(prefix+"ping"):
             await message.channel.send("pong")
@@ -227,6 +237,9 @@ async def on_message(message):
                     except IndexError:
                         await message.channel.send("error, it looks like your list of hacks don't have \"end\" at the end!")
                     os.remove(temp_user_save_dir)
+            #if there is no attachments:
+            else:
+                await message.channel.send("error, no save file attached")
                     
                     
 
