@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.INFO)
 
 #setup values
 prefix="ds: "
+bot_nickname = "(!save hacking bot!)"
 working_server_ids=[898279702677037117]
 bot_owner_id=587040662915121155
 dir_of_bot = r"I:\coding\python\discord-bots\temp_save_dir\\"
@@ -139,11 +140,18 @@ async def on_message(message):
         return
 #                                          ==== commands ====
     else:
-        if debug_mode == 1 and message.author != await client.fetch_user(bot_owner_id) and message.content.startswith(prefix):
+        if message.content.startswith(prefix+"reset nick") and client.get_guild(857886691938795541).get_member(client.application_id).nick != bot_nickname:
+            TEMP_BOT_NICK_DAT = client.get_guild(857886691938795541).get_member(client.application_id)
+            print("\nold nickname: "+TEMP_BOT_NICK_DAT.nick)
+            await TEMP_BOT_NICK_DAT.edit(nick = bot_nickname)
+            print("new nickname: "+client.get_guild(857886691938795541).get_member(client.application_id).nick+"\n")
+            await message.channel.send("nickname for bchc has been reset to: "+client.get_guild(857886691938795541).get_member(client.application_id).nick)
+        
+        elif debug_mode == 1 and message.author != await client.fetch_user(bot_owner_id) and message.content.startswith(prefix):
             await message.channel.send("the bot has been disabled for bug fixes.")
             return
 
-        if message.content.startswith(prefix+"off"):
+        elif message.content.startswith(prefix+"off"):
             if message.author.id == bot_owner_id:
                 print("shuting off the bot")
                 await message.channel.send("turning off...")
