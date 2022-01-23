@@ -17,7 +17,7 @@ bot_nickname = "(!save hacking bot!)"
 working_server_ids=[898279702677037117]
 bot_owner_id=587040662915121155
 dir_of_bot = r"I:\coding\python\discord-bots\temp_save_dir\\"
-with open("recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
+with open(dir_of_bot+r"\..\recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
     token=bot_settings_1.read(59)
 
 
