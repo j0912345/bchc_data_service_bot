@@ -189,7 +189,7 @@ async def on_message(message):
                 attachment = message.attachments[0]
                 user_save_name = f"{attachment.filename}"
                 temp_save_filename = f"{user_save_name}_at_"+str(round(time.time()))+"_by_"+str(author)
-                await attachment.save("temp_save_dir/"+temp_save_filename)
+                await attachment.save(dir_of_bot+temp_save_filename)
                 print("\ndownloaded a save file: "+temp_save_filename)
                 help_hack_message = f"please reply to this message with a list of hacks in a csv format. use \"{prefix} help\" for examples of these lists + how to make one."
                 await message.channel.send(help_hack_message)
