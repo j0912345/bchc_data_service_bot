@@ -140,10 +140,11 @@ async def on_message(message):
         return
 #                                          ==== commands ====
     else:
-        if message.content.startswith(prefix+"reset nick") and client.get_guild(857886691938795541).get_member(client.application_id).nick != bot_nickname:
+        if message.content.startswith(prefix+"reset nick") and message.author.id == bot_owner_id:
             TEMP_BOT_NICK_DAT = client.get_guild(857886691938795541).get_member(client.application_id)
             print("\nold nickname: "+TEMP_BOT_NICK_DAT.nick)
-            await TEMP_BOT_NICK_DAT.edit(nick = bot_nickname)
+            await TEMP_BOT_NICK_DAT.edit(nick = bot_nickname, reason=f"the bot nickname was reset by the bot owner ({await client.fetch_user(bot_owner_id)}). ask {await client.fetch_user(bot_owner_id)} if you want to change the bot nick please.")
+
             print("new nickname: "+client.get_guild(857886691938795541).get_member(client.application_id).nick+"\n")
             await message.channel.send("nickname for bchc has been reset to: "+client.get_guild(857886691938795541).get_member(client.application_id).nick)
         
