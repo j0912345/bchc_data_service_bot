@@ -3,11 +3,9 @@ a file called recover_from_crash.txt is missing from here because if it was here
   
 editor_functions_cs.py is based on [firey Henry's editor.](https://github.com/fieryhenry/Battle-Cats-Save-File-Editor)
 # what to download (windows 10):
-pycord (get the dev version because the normal download is incomplete):  
+pycord:  
 ```
-git clone https://github.com/Pycord-Development/pycord
-cd pycord
-py -3 -m pip install -U .[voice]
+pip install --no-cache-dir py-cord==2.0.0b3
 ```  
 you also need asyncio:  
 ```
