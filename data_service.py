@@ -18,7 +18,7 @@ bot_nickname = "(!save hacking bot!)"
 working_server_ids=[898279702677037117]
 bot_owner_id=587040662915121155
 bot_dir = str(pathlib.Path(__file__).parent.resolve())
-save_file_folder_dir = bot_dir+r"\temp_save_dir\\"
+save_file_folder_dir = bot_dir+r"/temp_save_dir/"
 print(bot_dir)
 with open(bot_dir+r"/recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
     token=bot_settings_1.read(59)
@@ -226,6 +226,7 @@ async def on_message(message):
                     #i couldn't use i in a function, it just wouldn't work
                     i = 0
                     temp_user_save_dir = save_file_folder_dir+temp_save_filename
+                    print(temp_user_save_dir)
                     try:
                         while done_hacking == False:
                             i = i + 1
