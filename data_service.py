@@ -20,7 +20,7 @@ bot_owner_id=587040662915121155
 bot_dir = str(pathlib.Path(__file__).parent.resolve())
 save_file_folder_dir = bot_dir+r"\temp_save_dir\\"
 print(bot_dir)
-with open(bot_dir+r"\recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
+with open(bot_dir+r"/recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
     token=bot_settings_1.read(59)
 
 
