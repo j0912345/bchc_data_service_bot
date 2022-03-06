@@ -8,20 +8,23 @@ import logging
 import editor_functions_cs
 import os
 import asyncio
+import pathlib
 logging.basicConfig(level=logging.INFO)
-    
+
 
 #setup values
 prefix="ds: "
 bot_nickname = "(!save hacking bot!)"
 working_server_ids=[898279702677037117]
 bot_owner_id=587040662915121155
-dir_of_bot = r"I:\coding\python\discord-bots\temp_save_dir\\"
-with open(dir_of_bot+r"\..\recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
+bot_dir = str(pathlib.Path(__file__).parent.resolve())
+save_file_folder_dir = bot_dir+r"\temp_save_dir\\"
+print(bot_dir)
+with open(bot_dir+r"\recover_from_crash.txt", "r") as bot_settings_1: #reads token from file
     token=bot_settings_1.read(59)
 
 
-client = commands.Bot(command_prefix=prefix, activity=discord.Game(name='with your save'))
+client = commands.Bot(command_prefix=prefix, activity=discord.Game(name='with your save. bot version: 1.1.2'))
 #client = discord.client(activity=discord.Game(name='with your save'))#makes "playing with your save file" as the status
 non_en_editor_support_warning="**WARNING!!!**\nfiery henry's save editor doesn't work well with saves that aren't en. please back up your save now in case something goes wrong."
 game_location=""
@@ -118,7 +121,7 @@ def decode_csv_to_list(input_csv):
     return(output_list)
     
 
-debug_mode = 0
+debug_mode = 1
 ##@client.event
 ##async def on_message_delete(message):
 #        deleted_message_amount
@@ -191,7 +194,7 @@ async def on_message(message):
                 attachment = message.attachments[0]
                 user_save_name = f"{attachment.filename}"
                 temp_save_filename = f"{user_save_name}_at_"+str(round(time.time()))+"_by_"+str(author)
-                await attachment.save(dir_of_bot+temp_save_filename)
+                await attachment.save(save_file_folder_dir+temp_save_filename)
                 print("\ndownloaded a save file: "+temp_save_filename)
                 help_hack_message = f"please reply to this message with a list of hacks in a csv format. use \"{prefix} help\" for examples of these lists + how to make one."
                 await message.channel.send(help_hack_message)
@@ -222,7 +225,7 @@ async def on_message(message):
 
                     #i couldn't use i in a function, it just wouldn't work
                     i = 0
-                    temp_user_save_dir = dir_of_bot+temp_save_filename
+                    temp_user_save_dir = save_file_folder_dir+temp_save_filename
                     try:
                         while done_hacking == False:
                             i = i + 1
