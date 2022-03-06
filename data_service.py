@@ -26,7 +26,7 @@ with open(bot_dir+r"/recover_from_crash.txt", "r") as bot_settings_1: #reads tok
 
 client = commands.Bot(command_prefix=prefix, activity=discord.Game(name='with your save. bot version: 1.1.2.1'))
 #client = discord.client(activity=discord.Game(name='with your save'))#makes "playing with your save file" as the status
-non_en_editor_support_warning="**WARNING!!!**\nfiery henry's save editor doesn't work well with saves that aren't en. please back up your save now in case something goes wrong."
+non_en_editor_support_warning="**WARNING!!!**\nfiery henry's save editor doesn't work well with saves that aren't en. please back up your save now in case something goes wrong!"
 game_location=""
 time_to_wait_before_timeout = 30
 
