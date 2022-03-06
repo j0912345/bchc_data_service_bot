@@ -121,7 +121,7 @@ def decode_csv_to_list(input_csv):
     return(output_list)
     
 
-debug_mode = 1
+debug_mode = 0
 ##@client.event
 ##async def on_message_delete(message):
 #        deleted_message_amount
